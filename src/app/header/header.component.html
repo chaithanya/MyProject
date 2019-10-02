@@ -1,0 +1,30 @@
+
+<div>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="JavaScript:Void(0);">Angular</a>
+
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/customerhomepage">Customer</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/userhomepage">Administration</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/ptest">PrimengTest</a>
+    </li>
+    <li class="nav-item" style="margin-left:300px;">
+      <a class="nav-link" routerLink="/login" (click)="logOut()">Logout</a>
+    </li>
+  </ul>
+</nav>
+</div>
+<div class="row">
+  <div class="col-sm-3"></div> <div class="col-sm-3"></div> <div class="col-sm-3"></div>
+<div class="col-sm-3">
+  Welcome {{userName}}
+</div>
+</div>
+

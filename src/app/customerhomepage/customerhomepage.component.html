@@ -1,0 +1,55 @@
+<app-header></app-header>
+<!-- <div class="container">
+  <div *ngFor="let customers of customerresponse">
+      <ul>{{customers.customerid}}</ul>
+      <ul>{{customers.customername}}</ul>
+  </div>
+</div> -->
+<div class="row">
+    <div class="col-sm-3"></div><div class="col-sm-3"></div><div class="col-sm-3"></div>
+  <div class="col-sm-3">
+  <button type="button" class="btn btn-primary" routerLink="/createcustomer" >Create Customer</button>
+</div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <h2>Customer Home Page</h2>
+      </div>
+    <div class="row">
+      <div class="form-group">
+        <label>Search:</label>
+        <input class="form-control" type="text" [(ngModel)]="term">
+      </div>
+      </div>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Customer ID</th>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Billing Site ID</th>
+        <th scope="col">Service Type</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let customers of customerresponse | filter: term | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
+      <tr>
+        <th scope="row">{{customers.rowId}}</th>
+        <a routerLink="/viewcustomer/{{customers.customerid}}"><td>{{customers.customerid}}</td> </a>
+        <td>{{customers.customername}}</td>
+        <td>{{customers.billingsiteid}}</td>
+        <td>{{customers.servicetype}}</td>
+        <td> <i class="fa fa-trash" (click)="onDelete(customers.customerid)"></i>
+         </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+<br><br><br>
+
+<app-footer></app-footer>

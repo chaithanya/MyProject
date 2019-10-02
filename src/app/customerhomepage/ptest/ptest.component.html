@@ -1,0 +1,68 @@
+<app-header></app-header>
+<div class="row">
+  <div class="col-sm-1">
+    <button type="button" class="btn btn-primary">Cancel</button>
+  </div>
+  <div class="col-sm-1">
+      <button type="button" class="btn btn-primary" (click)="saveCustomer()">Save</button>
+    </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+<div class="alert alert-success" role="alert" *ngIf="isupdateSuccess">
+    Customer Updated Successfully
+  </div>
+</div>
+</div>
+<div class="container">
+  <!-- <p-dataTable [value]="customerresponse">
+      <p-header>List of Customers</p-header>
+    <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [filter]="true"
+    filterPlaceholder="Search"></p-column>
+</p-dataTable> -->
+  <div class="card-header">
+    <div class="shadow">List of Customers</div>
+  </div>
+  <p-dataTable id="customers_table" [rows]="10" [paginator]="true" [(selection)]="selectedItems"
+    [value]="customerresponse" [rowStyleClass]="highlightSelectedRow" [editable]="true" [scrollable]="true"
+    (onRowclick)="rowClick($event)" (onEdit)="onEdit($event)" (onEditComplete)="onEditComplete($event)">
+
+    <p-column [filter]="true" filterPlaceholder="Search" sortField="rowId" [sortable]="true" field="rowId"
+      header="Row ID" [editable]="false">
+    </p-column>
+
+    <p-column [filter]="true" filterPlaceholder="Search" sortField="customerid" [sortable]="true" field="customerid"
+      header="Customer ID" [editable]="true">
+      <ng-template let-row="rowData" pTemplate="body">
+        {{row.customerid}}
+      </ng-template>
+    </p-column>
+
+    <p-column [filter]="true" filterPlaceholder="Search" sortField="customername" [sortable]="true" field="customername"
+      header="Customer Name" [editable]="true">
+      <ng-template let-row="rowData" pTemplate="body">
+          {{row.customername}}
+        </ng-template>
+    </p-column>
+
+    <p-column [filter]="true" filterPlaceholder="Search" sortField="billingsiteid" [sortable]="true"
+      field="billingsiteid" header="Billing Site ID" [editable]="true">
+      <ng-template let-row="rowData" pTemplate="body">
+          {{row.billingsiteid}}
+        </ng-template>
+    </p-column>
+
+    <p-column [filter]="true" filterPlaceholder="Search" sortField="servicetype" [sortable]="true" field="servicetype"
+      header="Service Type" [editable]="true">
+      <ng-template let-row="rowData" pTemplate="body">
+          {{row.servicetype}}
+        </ng-template>
+    </p-column>
+
+
+
+  </p-dataTable>
+
+</div>
+
+<app-footer></app-footer>

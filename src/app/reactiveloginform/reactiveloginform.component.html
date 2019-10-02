@@ -1,0 +1,45 @@
+<div class="container" style="width: 400px">
+
+  <div class="wrapper" style="margin-top:100px;">
+    <div class="alert alert-danger" *ngIf="isLoginSuccess">
+      Authentication Failed!
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="loginCheck()">
+      <div class="header">Login Page</div>
+      <div class="form-group">
+        <label>User Name: </label>
+        
+        <input type="text" class="form-control" formControlName="loginname" name="loginname" required
+        [ngClass]="{ 'is-invalid': isSubmitted && f.loginname.errors }">
+        
+        <div *ngIf="isSubmitted && f.loginname.errors" class="invalid-feedback">
+            <div *ngIf="f.loginname.errors.required">UserName is required</div>
+          </div>
+          
+      </div>
+      <div class="form-group">
+        <label>Password: </label>
+        
+        <input type="text" class="form-control" formControlName="password" name="password" required
+        [ngClass]="{ 'is-invalid': isSubmitted && f.password.errors }">
+        
+        <div *ngIf="isSubmitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                        
+          </div>
+
+      </div>
+      <div class="row">
+        <div class="col-sm-2">
+          <button class="btn btn-primary" type="submit" >Login</button>
+        </div>
+        <div class="col-sm-2">
+          <button class="btn btn-secondary" type="submit" routerLink="/register">Register</button>
+        </div>
+      </div>
+    </form>
+
+
+  </div>
+</div>

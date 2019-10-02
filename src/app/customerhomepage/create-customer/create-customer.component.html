@@ -1,0 +1,63 @@
+<app-header></app-header>
+<form id="createcustomerForm" name="createcustomerForm" #createcustomerForm="ngForm">
+  <div class="container">
+
+    <div class="alert alert-danger" role="alert" *ngIf="iscreateFailed">
+  customer create Failed!
+</div>
+<div class="alert alert-success" role="alert" *ngIf="iscreateSuccess">
+    customer create success
+  </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <label>Row ID</label>
+            <input type="text" class="form-control" name="rowId"
+            [(ngModel)]="customerrequest.rowId"/>
+            
+          </div>
+      <div class="col-md-4">
+        <label>Customer ID</label>
+        <input type="text" class="form-control" name="customerid"
+        [(ngModel)]="customerrequest.customerid"/>
+        
+      </div>
+      <div class="col-md-4">
+        <label><span style="color:red">*</span>Customer Name</label>
+        <input type="text" class="form-control" name="custname" [(ngModel)]="customerrequest.customername" #cname="ngModel" required />
+        <div [hidden]="cname.valid || cname.pristine" style="color:red">
+          Customer Name is required
+        </div>
+      </div>
+    </div>
+    <div class="row" style="padding-top: 20px;">
+            <div class="col-md-4">
+              <label>Billing Site ID</label>
+              <input type="text" class="form-control" name="billingsiteid"
+              [(ngModel)]="customerrequest.billingsiteid"/>
+              
+            </div>
+            <div class="col-md-4">
+              <label><span style="color:red">*</span>Service Type</label>
+              <input type="text" class="form-control" name="servicetype" [(ngModel)]="customerrequest.servicetype" #stype="ngModel" required />
+              <div [hidden]="stype.valid || stype.pristine" style="color:red">
+                Service Type is required
+              </div>
+            </div>
+          </div>
+
+    <div class="row" style="padding-top: 20px;">
+      <div class="col-md-4">
+        <button class="btn btn-secondary" type="button" (click)="onCancel()" style="margin-top:20px;">Cancel</button>
+        <button class="btn btn-primary" type="button" (click)="createCustomer(createcustomerForm)" style="margin-top:20px;"
+        [disabled]="!createcustomerForm.form.valid" >Save</button>
+      </div>
+    </div>
+
+  </div>
+
+
+</form>
+
+<br><br><br><br><br><br>
+<app-footer></app-footer>
